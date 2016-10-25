@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DesignAdapatatif.qmlproject</file>
+        <file>Style.qml</file>
+        <file>WidgetTitle.qml</file>
+        <file>qmldir</file>
+        <file>PageSeats.qml</file>
+        <file>WidgetHorizontalSlider.qml</file>
+        <file>WidgetSliderWithNumber.qml</file>
+        <file>WidgetSwitch.qml</file>
+    </qresource>
+</RCC>
