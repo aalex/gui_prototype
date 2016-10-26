@@ -14,8 +14,8 @@ import QtQuick.Window 2.2
 ApplicationWindow {
     visible: true
     visibility: Qt.platform.os == "windows" ? "FullScreen" : "AutomaticVisibility"
-    width: Screen.width
-    height: Screen.height
+    //width: Screen.width
+    //height: Screen.height
     title: qsTr("Controller App")
     Material.theme: Material.Dark
     Material.accent: Material.color(Material.Orange)

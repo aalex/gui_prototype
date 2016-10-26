@@ -103,6 +103,7 @@ Item {
         // Movie duration
         RowLayout {
             WidgetHorizontalSlider {
+                Layout.fillWidth: true
             }
             Label {
                 text: "0:00:00"
@@ -122,13 +123,61 @@ Item {
             //    label_text: qsTr("Your seats")
             //}
 
-            height: seatsDelegate.height * count // 4 //count
-            width: seatsDelegate.width * count // 4 // count
-            //orientation: ListView.Vertical // default
-            //verticalLayoutDirection: ListView.TopToBottom // default
+            //height: seatsDelegate.height * count // 4 //count
+            //width: seatsDelegate.width * count // 4 // count
+            orientation: ListView.Vertical // default
+            verticalLayoutDirection: ListView.TopToBottom // default
+
+            Layout.fillHeight: true
+            Layout.fillWidth: true
 
             // The layout for each item:
-            delegate: Component {
+            delegate:  RowLayout {
+                id: seatItemRow
+
+                Label {
+                    text: "" + number
+                }
+                WidgetSwitch {
+                    textOn: qsTr("Seat enabled")
+                    textOff: qsTr("Seat disabled")
+                }
+                GridLayout {
+                    columns: 3
+
+                    // motion
+                    Label {
+                        text: qsTr("Motion")
+                    }
+                    WidgetSliderWithNumber {
+                        from: -20
+                        to: 0
+                        value: 0
+                        editable: true
+                    }
+                    Label {
+                        text: qsTr("dB")
+                    }
+
+                    // vibration
+                    Label {
+                        text: qsTr("Vibration")
+                    }
+                    WidgetSliderWithNumber {
+                        from: -20
+                        to: 0
+                        value: 0
+                        editable: true
+                    }
+                    Label {
+                        text: qsTr("dB")
+                    }
+                }
+            }
+
+
+                /*
+                Component {
                 id: seatsDelegate
                 Item {
                     width: seatItemRow.width
@@ -136,50 +185,16 @@ Item {
                     //width: 400
                     //height: 120
 
-                    RowLayout {
-                        id: seatItemRow
-
-                        Label {
-                            text: "" + number
-                        }
-                        WidgetSwitch {
-                            textOn: qsTr("Seat enabled")
-                            textOff: qsTr("Seat disabled")
-                        }
-                        GridLayout {
-                            columns: 3
-
-                            // motion
-                            Label {
-                                text: qsTr("Motion")
-                            }
-                            WidgetSliderWithNumber {
-                                from: -20
-                                to: 0
-                                value: 0
-                                editable: true
-                            }
-                            Label {
-                                text: qsTr("dB")
-                            }
-
-                            // vibration
-                            Label {
-                                text: qsTr("Vibration")
-                            }
-                            WidgetSliderWithNumber {
-                                from: -20
-                                to: 0
-                                value: 0
-                                editable: true
-                            }
-                            Label {
-                                text: qsTr("dB")
-                            }
-                        }
+                    Component.onCompleted: {
+                        console.log("delegate.width: " + this.width)
+                        console.log("delegate.height: " + this.height)
                     }
-                }
-            }
+*/
+
+
+                  //      }
+                //    }
+
 //            highlight: Rectangle {
 //                color: Material.color(Material.Grey)
 //                radius: 5
@@ -190,6 +205,8 @@ Item {
 
             // the data about each seat
             model: ListModel {
+                id: seatsModel
+
                 ListElement {
                     number: 1
                     motion: -3
